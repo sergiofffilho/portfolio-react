@@ -22,7 +22,7 @@ const Form = (props) => {
         setName('')
         setDescription('')
         setImageUrl('')
-        setCategory('')
+        setCategory('Games')
     }
 
     return(

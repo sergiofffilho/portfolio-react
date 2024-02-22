@@ -23,7 +23,6 @@ export const Category = (props) => {
                     />)
                 }
             </div>
-
         </section>
     )
 }

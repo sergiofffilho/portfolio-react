@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Banner from './components/Banner/Banner.js'
 import Form from './components/Form';
 import Category from './components/Category';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -46,7 +47,7 @@ function App() {
           projects={projects.filter(project => project.category === category.name)}
         />
       )}     
-    
+      <Footer/>
     </div>
   );
 }
