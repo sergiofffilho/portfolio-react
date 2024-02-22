@@ -6,7 +6,8 @@ export const Dropdown = (props) => {
             <label>{props.label}</label>
             <select 
                 onChange={event => props.isChanged(event.target.value)} 
-                value={props.value}>
+                value={props.value}
+            >
                 {props.itens.map(item => { 
                     return <option key={item}>{item}</option>
                 })}

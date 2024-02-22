@@ -6,8 +6,6 @@ import { useState } from 'react'
 
 const Form = (props) => {
 
-    const categories = ['Games', 'Desktop', 'Web']
-
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [imageUrl, setImageUrl] = useState('')
@@ -20,7 +18,11 @@ const Form = (props) => {
             description,
             imageUrl,
             category
-        });
+        })
+        setName('')
+        setDescription('')
+        setImageUrl('')
+        setCategory('')
     }
 
     return(
@@ -45,7 +47,7 @@ const Form = (props) => {
                 />
                 <Dropdown 
                     label="category" 
-                    itens={categories} 
+                    itens={props.categories} 
                     value={category}
                     isChanged={value => setCategory(value)}
                 />
