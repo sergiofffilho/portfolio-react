@@ -28,8 +28,7 @@ function App() {
   const [projects, setProjects] = useState([])
 
   const onSubmit = (project) => {
-    project.id = uuidv4()
-    setProjects([...projects, project])
+    setProjects([...projects, {...project, id: uuidv4()}])
   }
 
   function onDeleteProject(id){
@@ -45,12 +44,17 @@ function App() {
     }))
   }
 
+  function registerCategory(newCategory){
+    setCategories([...categories, {...newCategory, id: uuidv4()}])
+  }
+
   return (
     <div>
       <Banner/>
       <Form 
         categories={categories.map(category => category.name)}
         onSubmit={project => onSubmit(project)} 
+        registerCategory={registerCategory}
       />
 
       <section className='categories'>

@@ -1,4 +1,4 @@
-import TextField from '../TextField'
+import Field from '../Field'
 import Dropdown from '../Dropdown'
 import './Form.css'
 import Button from '../Button'
@@ -10,6 +10,9 @@ const Form = (props) => {
     const [description, setDescription] = useState('')
     const [imageUrl, setImageUrl] = useState('')
     const [category, setCategory] = useState('Games')
+
+    const [categoryName, setcategoryName] = useState('')
+    const [categoryColor, setcategoryColor] = useState('')
 
     const save = (event) => {
         event.preventDefault()
@@ -26,21 +29,21 @@ const Form = (props) => {
     }
 
     return(
-        <section className='form'>
-            <form onSubmit={save} >
+        <section className='form-container'>
+            <form className='form' onSubmit={save} >
                 <h2>Add project</h2>
-                <TextField 
+                <Field
                     required={true} 
                     label="title"
                     value={name}
                     isChanged={value => setName(value)}
                 />
-                <TextField 
+                <Field
                     label="description"
                     value={description}
                     isChanged={value => setDescription(value)}
                 />
-                <TextField
+                <Field
                     label="image url"
                     value={imageUrl}
                     isChanged={value => setImageUrl(value)}
@@ -55,6 +58,28 @@ const Form = (props) => {
                     Create project
                 </Button>
             </form>           
+            <form className='form' onSubmit={(event => {
+                event.preventDefault()
+                props.registerCategory({name: categoryName, color: categoryColor})
+            })}>
+                <h2>Add category</h2>
+                <Field
+                    required
+                    label="category name"
+                    value={categoryName}
+                    isChanged={value => setcategoryName(value)}
+                />
+                <Field
+                    required
+                    label="color"
+                    value={categoryColor}
+                    isChanged={value => setcategoryColor(value)}
+                    type='color'
+                />
+                <Button>
+                    Create category
+                </Button>
+            </form>
         </section>
     )
 }
