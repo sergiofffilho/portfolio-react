@@ -35,6 +35,15 @@ function App() {
     setProjects(projects.filter(project => project.id !== id))
   }
 
+  function onFavorite(id){
+    setProjects(projects.map( project => {
+      if(project.id === id){
+        project.favorite = !project.favorite;
+      }
+      return project
+    }))
+  }
+
   function changeCategoryColor(color, id){
     setCategories(categories.map(category => {
       if(category.id === id){
@@ -65,6 +74,7 @@ function App() {
             category={category}
             projects={projects.filter(project => project.category === category.name)}
             onDelete={onDeleteProject}
+            onFavorite={onFavorite}
             onChangeColor={changeCategoryColor}
           />
         )}     

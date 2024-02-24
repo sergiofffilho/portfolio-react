@@ -1,7 +1,17 @@
-import { AiFillCloseCircle } from "react-icons/ai";
+import { AiFillCloseCircle, AiFillHeart, AiOutlineHeart  } from "react-icons/ai";
 import './Project.css'
 
-export const Project = ({project, backgroundColor, onDelete}) => {    
+export const Project = ({project, backgroundColor, onDelete, onFavorite}) => {
+    function favorite(){
+        {onFavorite(project.id)}
+    }
+
+    const propsFavorite = {
+        size: 25,
+        color: "Red",
+        onClick: favorite
+    }
+
     return(
         <div className='project'>
             <AiFillCloseCircle 
@@ -14,7 +24,12 @@ export const Project = ({project, backgroundColor, onDelete}) => {
             </div>
             <div className='footer'>
                 <h4>{project.name}</h4>
-                <h5>{project.description}</h5>
+                <h5>{project.description} </h5>
+                <div>
+                    {project.favorite ?
+                        <AiFillHeart {...propsFavorite} /> :
+                        <AiOutlineHeart {...propsFavorite} />}
+                </div>
             </div>            
         </div>
     )

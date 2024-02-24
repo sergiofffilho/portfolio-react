@@ -10,6 +10,7 @@ const Form = (props) => {
     const [description, setDescription] = useState('')
     const [imageUrl, setImageUrl] = useState('')
     const [category, setCategory] = useState('Games')
+    const [favorite, setFavorite] = useState(false)
 
     const [categoryName, setcategoryName] = useState('')
     const [categoryColor, setcategoryColor] = useState('')
@@ -20,7 +21,8 @@ const Form = (props) => {
             name,
             description,
             imageUrl,
-            category
+            category,
+            favorite
         })
         setName('')
         setDescription('')

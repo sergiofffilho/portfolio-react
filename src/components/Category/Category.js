@@ -30,6 +30,7 @@ export const Category = (props) => {
                         project={project}
                         backgroundColor={props.category.color}
                         onDelete={props.onDelete}
+                        onFavorite={props.onFavorite}
                     />
                 })}
             </div>
