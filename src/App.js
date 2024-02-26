@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import { v4 as uuidv4 } from 'uuid';
 
 function App() {
+  const [isShowForm, setIsShowForm] = useState(true)
 
   const [categories, setCategories] = useState([
     {
@@ -61,13 +62,21 @@ function App() {
     <div>
       <Banner/>
       <Form 
+        isShowForm={isShowForm}
         categories={categories.map(category => category.name)}
         onSubmit={project => onSubmit(project)} 
         registerCategory={registerCategory}
       />
 
+
       <section className='categories'>
         <h1>My projects</h1>
+
+        <img
+          src='images/toggle_form.png'
+          alt='open/hide form'
+          onClick={() => setIsShowForm(!isShowForm)}/>
+
         {categories.map(category => 
           <Category 
             key={category.id} 
